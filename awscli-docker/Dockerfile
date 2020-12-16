@@ -1,4 +1,5 @@
 FROM bitnami/aws-cli:latest
+LABEL maintainer="Gabriel Poleze Ferreira" email="gabriel.polse@gmail.com"
 
 RUN apt-get update -y &&
     apt-get install \
