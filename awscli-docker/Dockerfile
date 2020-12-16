@@ -1,7 +1,7 @@
 FROM bitnami/aws-cli:latest
 LABEL maintainer="Gabriel Poleze Ferreira" email="gabriel.polse@gmail.com"
 
-RUN apt-get update -y &&
+RUN apt-get update -y && \
     apt-get install \
     apt-transport-https \
     ca-certificates \
@@ -15,7 +15,7 @@ RUN add-apt-repository \
    $(lsb_release -cs) \
    stable"
 
-RUN apt-get update -y &&
+RUN apt-get update -y && \
     apt-get install docker-ce docker-ce-cli containerd.io
     
 ENTRYPOINT ["/bin/bash"]
