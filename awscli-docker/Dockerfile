@@ -1,4 +1,4 @@
-FROM: bitnami/aws-cli:latest
+FROM bitnami/aws-cli:latest
 
 RUN apt-get update -y &&
     apt-get install \
