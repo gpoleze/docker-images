@@ -1,7 +1,14 @@
-FROM amazon/aws-cli
+FROM docker:dind
 LABEL maintainer="Gabriel Poleze Ferreira" email="gabriel.poleze@gmail.com"
 
-RUN yum update \
-    && amazon-linux-extras install docker
+# Installing Python
+RUN apk add --update --no-cache python3 && ln -sf python3 /usr/bin/python
+RUN python3 -m ensurepip
+RUN pip3 install --no-cache --upgrade \
+    pip \
+    setuptools
 
-ENTRYPOINT ["/bin/bash"]
+# Intalling AWS CLI
+RUN pip3 install --no-cache --upgrade awscli
+
+ENTRYPOINT ["/bin/sh"]
