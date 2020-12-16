@@ -1,21 +1,7 @@
-FROM debian:latest
-LABEL maintainer="Gabriel Poleze Ferreira" email="gabriel.polse@gmail.com"
+FROM amazon/aws-cli
+LABEL maintainer="Gabriel Poleze Ferreira" email="gabriel.poleze@gmail.com"
 
-RUN apt-get update &&\
-    apt-get install -y \
-    apt-transport-https \
-    ca-certificates \
-    curl \
-    gnupg-agent \
-    software-properties-common
+RUN yum update \
+    && amazon-linux-extras install docker
 
-RUN curl -fsSL https://download.docker.com/linux/debian/gpg | apt-key add -
-RUN add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/debian \
-   $(lsb_release -cs) \
-   stable"
-
-RUN apt-get update &&\
-    apt-get install -y docker-ce docker-ce-cli containerd.io
-    
 ENTRYPOINT ["/bin/bash"]
